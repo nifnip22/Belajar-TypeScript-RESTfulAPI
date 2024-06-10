@@ -1,5 +1,11 @@
 # belajar_typescript_restfulapi
 
+YouTube video:
+
+```link
+https://www.youtube.com/watch?v=1-eEEJF5LCc&list=PL-CtdCApEFH9jIdygiF4vTIs4Xpo_cHhC&index=5&t=98s
+```
+
 To install dependencies:
 
 ```bash
