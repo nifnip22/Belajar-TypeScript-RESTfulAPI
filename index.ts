@@ -39,4 +39,7 @@ console.log("Hello via Bun!");
     Setelah membuat model maka kita akan melakukan migration dengan mengetikan perintah di terminal 'bunx prisma migrate dev' (pastikan dijalankan setiap membuat satu
     model baru)
 
+    Setelah membuat database dan model dengan schema prisma, selanjutnya kita akan melakukan setup project. Buat sebuah folder application di dalam folder src untuk 
+    melakukan beberapa setup.
+
 */ 
