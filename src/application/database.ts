@@ -23,7 +23,7 @@ export const prismaClient = new PrismaClient({
 	],
 });
 
-prismaClient.$on('query', (e) => {
+prismaClient.$on('error', (e) => {
 	logger.error(e);
 });
 
