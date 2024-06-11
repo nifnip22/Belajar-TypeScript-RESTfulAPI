@@ -1,10 +1,10 @@
 import { prismaClient } from "../application/database";
 import { ResponseError } from "../error/response-error";
-import { toUserResponse, type CreateUserRequest, type UserResponse } from "../model/user-model";
+import { toUserResponse, type CreateUserRequest, type LoginUserRequest, type UserResponse } from "../model/user-model";
 import { UserValidation } from "../validation/user-validation";
 import { Validation } from "../validation/validation";
 import bcrypt from "bcrypt";
-
+import { v4 as uuid } from "uuid";
 // Service Model untuk bisnis logic User
 export class UserService {
 
@@ -32,5 +32,41 @@ export class UserService {
 
         return toUserResponse(user);
     }
-    
+
+    static async login (request: LoginUserRequest): Promise<UserResponse> {
+        const loginRequest = Validation.validate(UserValidation.LOGIN, request);
+
+        // Cek database jika user ada
+        let user = await prismaClient.user.findUnique({
+            where: {
+                username: loginRequest.username
+            }
+        });
+
+        if(!user) {
+            throw new ResponseError(401, 'Username or password incorrect');
+        }
+
+        // Cek jika password valid
+        const isPasswordValid = await bcrypt.compare(loginRequest.password, user.password);
+        if(!isPasswordValid) {
+            throw new ResponseError(401, 'Username or password incorrect');
+        }
+
+        // Jika password valid, ubah data token
+        user = await prismaClient.user.update({
+            where: {
+                username: loginRequest.username
+            },
+            data: {
+                token: uuid()
+            }
+        });
+
+        const response = toUserResponse(user);
+        response.token = user.token!;
+        
+        return response;
+    }
+
 }

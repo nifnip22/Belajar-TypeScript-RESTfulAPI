@@ -28,6 +28,9 @@ console.log("Hello via Bun!");
     = Bcrypt
         'bun add bcrypt'
         'bun add --save-dev @types/bcrypt'
+    - UUID
+        'bun add uuid'
+        'bun add --save-dev @types/uuid'
     - Supertest
         'bun add --save-dev supertest @types/supertest'
         
