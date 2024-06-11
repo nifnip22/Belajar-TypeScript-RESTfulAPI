@@ -40,6 +40,19 @@ console.log("Hello via Bun!");
     model baru)
 
     Setelah membuat database dan model dengan schema prisma, selanjutnya kita akan melakukan setup project. Buat sebuah folder application di dalam folder src untuk 
-    melakukan beberapa setup.
+    melakukan beberapa setup. Setelahnya kita akan membuat beberapa folder di dalam folder src, yang pertama adalah folder controller untuk menyimpan beberapa request 
+    handler nya, yang kedua untuk bisnis logic nya kita akan buat dan simpan di folder service, yang ketiga untuk menyimpan data pertukaran data antara request dan
+    response kita buat folder model, yang keempat untuk melakukan proses validation kita buat folder validation, yang kelima untuk membuat kondisi error sendiri dengan
+    membuat folder error, yang ke enam untuk membuat router kita buat folder route, yang ketujuh adalah folder middleware untuk error. Berikut urutan folder yang diperhatikan:
+    1. model
+    2. validation
+    3. error
+    4. service
+    5. controller
+    6. route
+    7. middleware
+    8. web.ts (/application)
+
+    Di folder tests kita akan membuat unit bun test untuk melakukan pengujian jika proses seperti register user, login user, get address dan lainnya itu berjalan dengan baik.
 
 */ 
