@@ -1,4 +1,4 @@
-import type { User } from "@prisma/client";
+import type { Contact, User } from "@prisma/client";
 import { prismaClient } from "../src/application/database";
 import bcrypt from "bcrypt";
 
@@ -38,6 +38,19 @@ export class UserTest {
         }
 
         return user;
+    }
+
+}
+
+export class ContactTest {
+
+    // Proses menghapus data contact jika unit test selesai di jalankan
+    static async deleteAll() {
+        await prismaClient.contact.deleteMany({
+            where: {
+                username: "test",
+            }
+        });
     }
 
 }
