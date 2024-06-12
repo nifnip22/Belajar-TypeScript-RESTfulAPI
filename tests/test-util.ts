@@ -53,4 +53,32 @@ export class ContactTest {
         });
     }
 
+    // Proses untuk menyimpan satu data contact
+    static async create() {
+        await prismaClient.contact.create({
+            data: {
+                first_name: "test",
+                last_name: "test",
+                email: "test@example.com",
+                phone: "081234567890",
+                username: "test",
+            }
+        });
+    }
+
+    // Proses untuk mendapatkan id contact
+    static async get(): Promise<Contact> {
+        const contact = await prismaClient.contact.findFirst({
+            where: {
+                username: "test",
+            }
+        });
+
+        if (!contact) {
+            throw new Error('404 contact is not found');
+        }
+
+        return contact;
+    }
+
 }
