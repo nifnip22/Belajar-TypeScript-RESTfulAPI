@@ -159,3 +159,35 @@ describe('PATCH /api/users/current', () => {
         expect(await bcrypt.compare('lancarjaya99', user.password)).toBe(true);
 	});
 });
+
+describe('DELETE /api/users/current', () => {
+    beforeEach(async () => {
+		await UserTest.create();
+	});
+
+	afterEach(async () => {
+		await UserTest.delete();
+	});
+
+    // Jika user berhasil logout
+    it('should be able to logout', async () => {
+        const response = await supertest(web).delete('/api/users/current').set('X-API-TOKEN', 'test');
+
+        logger.debug(response.body);
+        expect(response.status).toBe(200);
+        expect(response.body.data).toBe('Successfully logged out');
+
+        // Cek jika data token nya hilang
+        const user = await UserTest.get();
+        expect(user.token).toBeNull();
+    });
+
+    // Jika user gagal logout
+    it('should reject user logout if token is invalid', async () => {
+        const response = await supertest(web).delete('/api/users/current').set('X-API-TOKEN', 'salah');
+
+        logger.debug(response.body);
+        expect(response.status).toBe(401);
+        expect(response.body.errors).toBeDefined();
+    });
+});

@@ -129,7 +129,7 @@ Response Body (Failure):
 }
 ```
 
-## Delete User
+## Logout User
 
 Endpoint : DELETE /api/users/current
 
@@ -141,7 +141,7 @@ Response Body (Success):
 
 ```json
 {
-	"data" : "User successfully deleted"
+	"data" : "Successfully logged out"
 }
 ```
 
