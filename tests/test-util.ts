@@ -1,4 +1,4 @@
-import type { Contact, User } from '@prisma/client';
+import type { Address, Contact, User } from '@prisma/client';
 import { prismaClient } from '../src/application/database';
 import bcrypt from 'bcrypt';
 
@@ -87,5 +87,35 @@ export class AddressTest {
 				contact: { username: 'test' },
 			},
 		});
+	}
+
+    // Proses untuk menyimpan satu data address
+	static async create() {
+        const contact = await ContactTest.get();
+		await prismaClient.address.create({
+			data: {
+                contact_id: contact.id,
+				street: 'Street',
+				city: 'City',
+				province: 'Province',
+                country: 'Country',
+                postal_code: '12345'
+			},
+		});
+	}
+
+    // Proses untuk mendapatkan id address
+	static async get(): Promise<Address> {
+		const address = await prismaClient.address.findFirst({
+			where: {
+				contact: {username: 'test'},
+			},
+		});
+
+		if (!address) {
+			throw new Error('404 address is not found');
+		}
+
+		return address;
 	}
 }
