@@ -1,0 +1,138 @@
+### Register user
+POST http://localhost:3000/api/users
+Content-Type: application/json
+Accept: application/json
+
+{
+    "username" : "nifnip22",
+    "password" : "hanifahmad22",
+    "name" : "Hanif"
+}
+
+### Login user
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "username" : "nifnip22",
+    "password" : "hanif22ahmad"
+}
+
+### Get user
+GET http://localhost:3000/api/users/current
+Accept: application/json
+X-API-TOKEN: df11a4d7-f2ab-41b2-9d45-842681fe4062
+
+### Update user name
+PATCH http://localhost:3000/api/users/current
+Accept: application/json
+Content-Type: application/json
+X-API-TOKEN: df11a4d7-f2ab-41b2-9d45-842681fe4062
+
+{
+    "name" : "Hanif Ahmad"
+}
+
+### Update user password
+PATCH http://localhost:3000/api/users/current
+Accept: application/json
+Content-Type: application/json
+X-API-TOKEN: df11a4d7-f2ab-41b2-9d45-842681fe4062
+
+{
+    "password" : "hanif22ahmad"
+}
+
+### Logout user
+DELETE http://localhost:3000/api/users/current
+Accept: application/json
+X-API-TOKEN: df11a4d7-f2ab-41b2-9d45-842681fe4062
+
+
+
+### Create Contact
+POST http://localhost:3000/api/contacts
+Content-Type: application/json
+Accept: application/json
+X-API-TOKEN: df11a4d7-f2ab-41b2-9d45-842681fe4062
+
+{
+    "first_name" : "Zharif Aziz Zulkarnain",
+    "last_name" : "Widodo",
+    "email" : "zharifazizzulkarnain17@gmail.com",
+    "phone" : "081234567890"
+}
+
+### Get Contact
+GET http://localhost:3000/api/contacts/171
+Accept: application/json
+X-API-TOKEN: df11a4d7-f2ab-41b2-9d45-842681fe4062
+
+### Update Contact
+PUT http://localhost:3000/api/contacts/171
+Content-Type: application/json
+Accept: application/json
+X-API-TOKEN: df11a4d7-f2ab-41b2-9d45-842681fe4062
+
+{
+    "first_name" : "Hanif",
+    "last_name" : "Ahmad",
+    "email" : "hanif22ahmad@gmail.com",
+    "phone" : "081212121212"
+}
+
+### Search Contact
+GET http://localhost:3000/api/contacts
+Accept: application/json
+X-API-TOKEN: df11a4d7-f2ab-41b2-9d45-842681fe4062
+
+### Remove Contact
+DELETE http://localhost:3000/api/contacts/170
+Accept: application/json
+X-API-TOKEN: df11a4d7-f2ab-41b2-9d45-842681fe4062
+
+
+
+### Create Address
+POST http://localhost:3000/api/contacts/172/addresses
+Content-Type: application/json
+Accept: application/json
+X-API-TOKEN: df11a4d7-f2ab-41b2-9d45-842681fe4062
+
+{
+    "street" : "Jl. Indrakila",
+    "city" : "Balikpapan",
+    "province" : "Kalimantan Timur",
+    "country" : "Indonesia",
+    "postal_code" : "76125"
+}
+
+### Get Address
+GET http://localhost:3000/api/contacts/172/addresses/76
+Accept: application/json
+X-API-TOKEN: df11a4d7-f2ab-41b2-9d45-842681fe4062
+
+### Update Address
+PUT http://localhost:3000/api/contacts/172/addresses/76
+Content-Type: application/json
+Accept: application/json
+X-API-TOKEN: df11a4d7-f2ab-41b2-9d45-842681fe4062
+
+{
+    "street" : "Strat 2",
+    "city" : "Balikpapan",
+    "province" : "Kalimantan Timur",
+    "country" : "Indonesia",
+    "postal_code" : "76125"
+}
+
+### List Address
+GET http://localhost:3000/api/contacts/172/addresses
+Accept: application/json
+X-API-TOKEN: df11a4d7-f2ab-41b2-9d45-842681fe4062
+
+### Remove Address
+DELETE http://localhost:3000/api/contacts/172/addresses/77
+Accept: application/json
+X-API-TOKEN: df11a4d7-f2ab-41b2-9d45-842681fe4062
